@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import {useState } from 'react'
 import Button from '@mui/material/Button';
 import { Avatar, MenuItem, Select, SelectChangeEvent, TextField } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
@@ -12,7 +12,6 @@ function WordForm() {
     const [file, setFile] = useState<any>(null);
     const active = new ActivateValue();
     const [linkimage, setlinkimage] = useState<string>("");
-
     const handleImageChange = (e: any) => {
         setimgae(URL.createObjectURL(e.target.files[0]));
         setFile(e.target.files[0]);
@@ -29,6 +28,11 @@ function WordForm() {
     const savedata = async () => {
         await active.getvalueword(word, linkimage, tag);
         setword("");
+        setimgae("");
+        setFile(null);
+        setlinkimage("");
+       
+        settag(1);
     }
     return (
 
@@ -109,7 +113,7 @@ function WordForm() {
                 </Select>
             </div>
             <div>
-                <TextField type='file' fullWidth variant="filled" margin="normal" onChange={handleImageChange} />
+                <TextField type='file'  fullWidth variant="filled" margin="normal" onChange={handleImageChange} />
                 <TextField value={linkimage} type='text' fullWidth disabled variant="standard" margin="normal" />
             </div>
             <div >
