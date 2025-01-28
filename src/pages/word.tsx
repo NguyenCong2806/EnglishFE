@@ -3,7 +3,6 @@ import { addWordEnglish, updateFile } from "../AsyncThunk/WordAsyncThunk/wordasy
 import { wordstructuredto } from "../model/wordstructuredto";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import { selectWord } from "../Slice/WordSlice";
-
 function word() {
   const [word, setword] = useState("");
   const [imgae, setimgae] = useState<string>("");
@@ -14,10 +13,10 @@ function word() {
   const wordsdto = new wordstructuredto();
 
   // Get the posts from the store
-  const wordData = useAppSelector(selectWord);
+  const { status, error, link } = useAppSelector(selectWord);
   useEffect(() => {
-    wordData
-  }, [wordData])
+    setimgae(link);
+  }, [dispatch, status,error,link])
   const handleImageChange = (e: any) => {
     setimgae(URL.createObjectURL(e.target.files[0]));
     setFile(e.target.files[0]);
@@ -29,8 +28,9 @@ function word() {
     settag(parseInt(event.target.value));
   };
   const UploadFile = async () => {
-  const data = await dispatch(updateFile(file));
-   setlinkimage(data.payload as string);
+    const data = await dispatch(updateFile(file));
+    console.log(link);
+    //setlinkimage(data.payload as string);
   }
   const savedata = () => {
     wordsdto.word = word;
