@@ -9,11 +9,8 @@ class WordService
     implements IWordService {
     async addword(data: wordstructuredto): Promise<ResultData> {
         try {
-            const res = new ResultData();
-            data.translate = await translate(data.translate, "vi");
-            await super.add(data);
-
-            return res;
+            data.translate = await translate(data.word, "vi");
+            return await super.add(data);
 
         } catch (error) {
             throw new Error("Method not implemented.");
