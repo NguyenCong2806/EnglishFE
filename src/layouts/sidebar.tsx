@@ -11,7 +11,7 @@ function Sidebar() {
                 </div>
                 <div className="sidebar-brand-text mx-3">Home Page</div>
             </NavLink>
-            <li className="nav-item active">
+            <li className="nav-item">
                 <NavLink className="nav-link" to={'/'}>
                     <i className="fas fa-fw fa-tachometer-alt"></i>
                     <span>Bảng mục</span></NavLink>
